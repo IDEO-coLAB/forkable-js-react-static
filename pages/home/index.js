@@ -25,18 +25,15 @@ class HomePage extends React.Component {
 
   render() {
     return (
-      <Layout className={s.content}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-        <h4>Articles</h4>
-        <ul>
-          {this.props.articles.map((article, i) =>
-            <li key={i}><a href={article.url}>{article.title}</a> by {article.author}</li>
-          )}
-        </ul>
-        <p>
-          <br /><br />
-        </p>
-      </Layout>
+      <div className={s.container}>
+        <div className={s.line}>
+          <div className={s.lastUnit}>
+            <div className={s.size1of4}>
+              <h1>kern tek r j   tnew krjt erkjt ewjrt erjt ejwrt ewjrth jerh jer jewhr tejrht ewrjht rje t rejht ejrht erjht </h1>
+            </div> 
+          </div> 
+        </div> 
+      </div>
     );
   }
 

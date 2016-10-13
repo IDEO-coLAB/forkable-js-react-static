@@ -8,10 +8,23 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-@media screen and (max-width: 1024px) {
 
-  .content {
-    padding: 0 16px;
-  }
 
+.container {
+	composes: container from './../../styles/grid.css';
 }
+
+.line {
+	composes: line from './../../styles/grid.css';
+}
+
+.lastUnit {
+	composes: lastUnit from './../../styles/grid.css';
+}
+
+.size1of4 {
+	composes: size1of4 from './../../styles/grid.css';
+	margin-left: 200px;
+	color: red;
+}
+

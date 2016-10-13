@@ -20,6 +20,11 @@ import store from './core/store';
 import router from './core/router';
 import history from './core/history';
 
+
+// import global css so webpack finds it
+import css from './styles/base.css'
+import grid from './styles/grid.css'
+
 let routes = require('./routes.json'); // Loaded with utils/routes-loader.js
 const container = document.getElementById('container');
 
