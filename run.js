@@ -36,7 +36,7 @@ function run(task) {
 //
 // Clean up the output directory
 // -----------------------------------------------------------------------------
-tasks.set('clean', () => del(['public/dist/*', '!public/dist/.git'], { dot: true }));
+tasks.set('clean', () => del(['dist/*', '!dist/.git'], { dot: true }));
 
 //
 // Generate sitemap.xml
