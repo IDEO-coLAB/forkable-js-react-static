@@ -8,10 +8,10 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import history from '../../core/history';
 
-class Link extends React.Component {
+class Link extends Component {
 
   static propTypes = {
     to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
@@ -48,8 +48,8 @@ class Link extends React.Component {
   };
 
   render() {
-    const { to, ...props } = this.props; // eslint-disable-line no-use-before-define
-    return <a href={history.createHref(to)} {...props} onClick={this.handleClick} />;
+    const { to, ...props } = this.props
+    return <a href={history.createHref(to)} {...props} onClick={this.handleClick} />
   }
 
 }

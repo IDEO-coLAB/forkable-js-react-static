@@ -1,40 +1,32 @@
-/**
- * React Static Boilerplate
- * https://github.com/kriasoft/react-static-boilerplate
- *
- * Copyright © 2015-present Kriasoft, LLC. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
+import React, { PropTypes, Component } from 'react';
 
-import React, { PropTypes } from 'react';
-import Layout from '../../components/Layout';
+// import local css as s. 
 import s from './styles.css';
-import { title, html } from './index.md';
+// import global css as gs
+import gs from './../../styles/grid.css'
+import Card from './../../components/Card/Card'
 
-class HomePage extends React.Component {
-
-  static propTypes = {
-    articles: PropTypes.array.isRequired,
-  };
-
-  componentDidMount() {
-    document.title = title;
-  }
+class HomePage extends Component {
 
   render() {
     return (
-      <div className={s.container}>
-        <div className={s.line}>
-          <div className={s.lastUnit}>
-            <div className={s.size1of4}>
-              <h1>kern tek r j   tnew krjt erkjt ewjrt erjt ejwrt ewjrth jerh jer jewhr tejrht ewrjht rje t rejht ejrht erjht </h1>
-            </div> 
-          </div> 
-        </div> 
+      <div className={gs.container}>
+        <div className={gs.line}>
+          <div className={s.cardContainer}>
+            <Card target="/stupid-tree" header="Idiotic Tree Keeps Trying To Plant Seeds On Sidewalk" body="PORTLAND, OR—Pointing out that the total dipshit had dropped dozens of acorns all along the length of pavement, sources confirmed Thursday that a completely idiotic tree keeps trying to plant seeds on the sidewalk. “Come on, you fucking moron, what are you doing? That’s concrete"/>
+          </div>
+          <div className={s.cardContainer}>
+            <Card target="/stupid-tree" header="Idiotic Tree Keeps Trying To Plant Seeds On Sidewalk" body="PORTLAND, OR—Pointing out that the total dipshit had dropped dozens of acorns all along the length of pavement, sources confirmed Thursday that a completely idiotic tree keeps trying to plant seeds on the sidewalk. “Come on, you fucking moron, what are you doing? That’s concrete"/>
+          </div>
+          <div className={s.cardContainer}>
+            <Card target="/stupid-tree" header="Idiotic Tree Keeps Trying To Plant Seeds On Sidewalk" body="PORTLAND, OR—Pointing out that the total dipshit had dropped dozens of acorns all along the length of pavement, sources confirmed Thursday that a completely idiotic tree keeps trying to plant seeds on the sidewalk. “Come on, you fucking moron, what are you doing? That’s concrete"/>
+          </div>
+          <div className={s.cardContainer}>
+            <Card target="/stupid-tree" header="Idiotic Tree Keeps Trying To Plant Seeds On Sidewalk" body="PORTLAND, OR—Pointing out that the total dipshit had dropped dozens of acorns all along the length of pavement, sources confirmed Thursday that a completely idiotic tree keeps trying to plant seeds on the sidewalk. “Come on, you fucking moron, what are you doing? That’s concrete"/>
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 
 }

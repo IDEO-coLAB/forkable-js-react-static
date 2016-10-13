@@ -8,23 +8,11 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-
-
-.container {
-	composes: container from './../../styles/grid.css';
-}
-
-.line {
-	composes: line from './../../styles/grid.css';
-}
-
-.lastUnit {
-	composes: lastUnit from './../../styles/grid.css';
-}
-
-.size1of4 {
+/** local stylse can still inheret properties from global styles (or any style in another
+file) using composes keyword */
+.cardContainer {
+	composes: unit from './../../styles/grid.css';
 	composes: size1of4 from './../../styles/grid.css';
-	margin-left: 200px;
-	color: red;
 }
+
 

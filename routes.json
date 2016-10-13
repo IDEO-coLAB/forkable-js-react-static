@@ -2,24 +2,16 @@
   {
     "path": "/",
     "page": "./pages/home",
-    "chunk": "main",
-    "data": {
-      "articles": "GET https://gist.githubusercontent.com/koistya/a32919e847531320675764e7308b796a/raw/articles.json"
-    }
+    "chunk": "main"
+  },
+  {
+    "path": "/stupid-tree",
+    "page": "./pages/article",
+    "chunk": "main"
   },
   {
     "path": "/error",
     "page": "./pages/error",
     "chunk": "main"
-  },
-  {
-    "path": "/about",
-    "page": "./pages/about",
-     "chunk": "main"
-  },
-  {
-    "path": "/tasks/:status(pending|completed)?",
-    "page": "./pages/home",
-     "chunk": "main"
   }
 ]

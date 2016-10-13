@@ -1,0 +1,15 @@
+.articleHeadline {
+	composes: unit from './../../styles/grid.css';
+	composes: size2of4 from './../../styles/grid.css';
+	background-color: #222222;
+	font-size: 20px;
+	color: #eeeeee;
+	padding: 5px;
+	margin-bottom: 30px;
+}
+
+.articleBody {
+	composes: lastUnit from './../../styles/grid.css';
+	composes: size2of4 from './../../styles/grid.css';
+	font-size: 14px;
+}
