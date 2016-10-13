@@ -14,10 +14,12 @@
   },
   {
     "path": "/about",
-    "page": "./pages/about"
+    "page": "./pages/about",
+     "chunk": "main"
   },
   {
     "path": "/tasks/:status(pending|completed)?",
-    "page": "./pages/home"
+    "page": "./pages/home",
+     "chunk": "main"
   }
 ]

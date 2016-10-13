@@ -44,7 +44,7 @@ const config = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/',
     filename: 'bundle.js',
-    // chunkFilename: isDebug ? '[id].js?[chunkhash]' : '[id].[chunkhash].js',
+    chunkFilename: isDebug ? '[id].js?[chunkhash]' : '[id].[chunkhash].js',
     sourcePrefix: '  ',
   },
 
@@ -70,7 +70,7 @@ const config = {
 
   // The list of plugins for Webpack compiler
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    // new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
       __DEV__: isDebug,
