@@ -1,8 +1,9 @@
-# React Static Boilerplate
+# Forkable JavaScript React Static
 
-> **React Static Boilerplate** is a repo for creating React based stand alone websites
+> **Forkable JavaScript React Static** is a template for creating React based stand alone websites
 > (sites that are served as static html, css, and javascript). The repo doesn't include any server, it
-> needs to be built and deployed to a static page web server.
+> needs to be built and deployed to a static web server. (Though it can be connected to existing services
+like Firebase)
 
 ### Features
 
