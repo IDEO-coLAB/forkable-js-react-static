@@ -7,14 +7,6 @@ import Link from './../Link/Link'
 import s from './styles.css'
 
 class CardComponent extends Component {
-	
-	// To catch errors, this specifies what properties the	 component expects passed in as this.props
-	static propTypes = {
-		header: PropTypes.string.isRequired,
-		body: PropTypes.string.isRequired,
-		target: PropTypes.string.isRequired
-	}
-
   render() {
     return(
     	<div className={s.card}>
@@ -25,6 +17,13 @@ class CardComponent extends Component {
     	</div>
     )
   }
+}
+
+// To catch errors, this specifies what properties the component expects passed in this.props
+CardComponent.propTypes = {
+  header: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  target: PropTypes.string.isRequired
 }
 
 export default CardComponent

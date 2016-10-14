@@ -1,3 +1,16 @@
 {
-  "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "plugins": [
+  	"react"
+   ],
+  "parserOptions": {
+	  "ecmaFeatures": {
+	    "jsx": true
+  	}
+  },
+  "rules": {
+  	"semi": ["error", "never"]
+  }
 }
+
+
