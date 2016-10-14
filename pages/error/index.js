@@ -8,33 +8,27 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-import React from 'react';
-import history from '../../core/history';
-import Link from '../../components/Link/Link';
-import s from './styles.css';
+import React from 'react'
+import history from '../../core/history'
+import s from './styles.css'
 
 class ErrorPage extends React.Component {
-
-  static propTypes = {
-    error: React.PropTypes.object,
-  };
-
   componentDidMount() {
     document.title = this.props.error && this.props.error.status === 404 ?
-      'Page Not Found' : 'Error';
+      'Page Not Found' : 'Error'
   }
 
-  goBack = event => {
-    event.preventDefault();
-    history.goBack();
-  };
+  goBack(event) {
+    event.preventDefault()
+    history.goBack()
+  }
 
   render() {
-    if (this.props.error) console.error(this.props.error); // eslint-disable-line no-console
+    if (this.props.error) console.error(this.props.error) // eslint-disable-line no-console
 
     const [code, title] = this.props.error && this.props.error.status === 404 ?
       ['404', 'Page not found'] :
-      ['Error', 'Oups, something went wrong'];
+      ['Error', 'Oups, something went wrong']
 
     return (
       <div className={s.container}>
@@ -52,9 +46,13 @@ class ErrorPage extends React.Component {
           </p>
         </main>
       </div>
-    );
+    )
   }
 
 }
 
-export default ErrorPage;
+ErrorPage.propTypes = {
+  error: React.PropTypes.object,
+}
+
+export default ErrorPage
