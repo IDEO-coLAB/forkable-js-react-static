@@ -10,18 +10,18 @@
 
 /* eslint-disable global-require */
 
-const path = require('path');
-const webpack = require('webpack');
-const pkg = require('./package.json');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const pkg = require('./package.json')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
-const isDebug = global.DEBUG === false ? false : !process.argv.includes('--release');
-const isVerbose = process.argv.includes('--verbose') || process.argv.includes('-v');
-const useHMR = !!global.HMR; // Hot Module Replacement (HMR)
+const isDebug = global.DEBUG === false ? false : !process.argv.includes('--release')
+const isVerbose = process.argv.includes('--verbose') || process.argv.includes('-v')
+const useHMR = !!global.HMR // Hot Module Replacement (HMR)
 const babelConfig = Object.assign({}, pkg.babel, {
   babelrc: false,
   cacheDirectory: useHMR,
-});
+})
 
 // Webpack configuration (main.js => public/dist/main.{hash}.js)
 // http://webpack.github.io/docs/configuration.html
@@ -74,7 +74,7 @@ const config = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': isDebug ? '"development"' : '"production"',
       __DEV__: isDebug,
-    })
+    }),
   ],
 
   // Options affecting the normal modules
@@ -145,31 +145,31 @@ const config = {
       // Transfer @import rule by inlining content, e.g. @import 'normalize.css'
       // https://github.com/postcss/postcss-import
       require('postcss-import')({ addDependencyTo: bundler }),
-      // W3C variables, e.g. :root { --color: red; } div { background: var(--color); }
+      // W3C variables, e.g. :root { --color: red } div { background: var(--color) }
       // https://github.com/postcss/postcss-custom-properties
       require('postcss-custom-properties')(),
-      // W3C CSS Custom Media Queries, e.g. @custom-media --small-viewport (max-width: 30em);
+      // W3C CSS Custom Media Queries, e.g. @custom-media --small-viewport (max-width: 30em)
       // https://github.com/postcss/postcss-custom-media
       require('postcss-custom-media')(),
       // CSS4 Media Queries, e.g. @media screen and (width >= 500px) and (width <= 1200px) { }
       // https://github.com/postcss/postcss-media-minmax
       require('postcss-media-minmax')(),
-      // W3C CSS Custom Selectors, e.g. @custom-selector :--heading h1, h2, h3, h4, h5, h6;
+      // W3C CSS Custom Selectors, e.g. @custom-selector :--heading h1, h2, h3, h4, h5, h6
       // https://github.com/postcss/postcss-custom-selectors
       require('postcss-custom-selectors')(),
-      // W3C calc() function, e.g. div { height: calc(100px - 2em); }
+      // W3C calc() function, e.g. div { height: calc(100px - 2em) }
       // https://github.com/postcss/postcss-calc
       require('postcss-calc')(),
       // Allows you to nest one style rule inside another
       // https://github.com/jonathantneal/postcss-nesting
       require('postcss-nesting')(),
-      // W3C color() function, e.g. div { background: color(red alpha(90%)); }
+      // W3C color() function, e.g. div { background: color(red alpha(90%)) }
       // https://github.com/postcss/postcss-color-function
       require('postcss-color-function')(),
-      // Convert CSS shorthand filters to SVG equivalent, e.g. .blur { filter: blur(4px); }
+      // Convert CSS shorthand filters to SVG equivalent, e.g. .blur { filter: blur(4px) }
       // https://github.com/iamvdo/pleeease-filters
       require('pleeease-filters')(),
-      // Generate pixel fallback for "rem" units, e.g. div { margin: 2.5rem 2px 3em 100%; }
+      // Generate pixel fallback for "rem" units, e.g. div { margin: 2.5rem 2px 3em 100% }
       // https://github.com/robwierzbowski/node-pixrem
       require('pixrem')(),
       // W3C CSS Level4 :matches() pseudo class, e.g. p:matches(:first-child, .special) { }
@@ -184,31 +184,31 @@ const config = {
       // Add vendor prefixes to CSS rules using values from caniuse.com
       // https://github.com/postcss/autoprefixer
       require('autoprefixer')(),
-    ];
+    ]
   },
 
-};
+}
 
 // Optimize the bundle in release (production) mode
 if (!isDebug) {
-  config.plugins.push(new webpack.optimize.DedupePlugin());
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: isVerbose } }));
-  config.plugins.push(new webpack.optimize.AggressiveMergingPlugin());
+  config.plugins.push(new webpack.optimize.DedupePlugin())
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: isVerbose } }))
+  config.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
 }
 
 // Hot Module Replacement (HMR) + React Hot Reload
 if (isDebug && useHMR) {
-  babelConfig.plugins.unshift('react-hot-loader/babel');
-  config.entry.unshift('react-hot-loader/patch', 'webpack-hot-middleware/client');
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
-  config.plugins.push(new webpack.NoErrorsPlugin());
+  babelConfig.plugins.unshift('react-hot-loader/babel')
+  config.entry.unshift('react-hot-loader/patch', 'webpack-hot-middleware/client')
+  config.plugins.push(new webpack.HotModuleReplacementPlugin())
+  config.plugins.push(new webpack.NoErrorsPlugin())
 }
 
 config.plugins.push(
   new CopyWebpackPlugin([
     { from: 'assets', to: 'assets' },
     { from: 'robots.txt', to: 'robots.txt' },
-    { from: 'index.html', to: 'index.html' }
+    { from: 'index.html', to: 'index.html' },
   ])
 )
-module.exports = config;
+module.exports = config
