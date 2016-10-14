@@ -2,19 +2,19 @@
 
 import React, { Component, PropTypes } from 'react'
 
-import Link from './../Link/Link' 
+import Link from './../Link/Link'
 // local styles
 import s from './styles.css'
 
 class CardComponent extends Component {
   render() {
-    return(
-    	<div className={s.card}>
-    		<Link to={this.props.target}>
-    			<h1 className={s.cardHeader}>{this.props.header}</h1>
-    		</Link> 
-    		<p className={s.cardBody}>{this.props.body}</p>
-    	</div>
+    return (
+      <div className={s.card}>
+        <Link to={this.props.target}>
+          <h1 className={s.cardHeader}>{this.props.header}</h1>
+        </Link>
+        <p className={s.cardBody}>{this.props.body}</p>
+      </div>
     )
   }
 }
@@ -23,7 +23,7 @@ class CardComponent extends Component {
 CardComponent.propTypes = {
   header: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
-  target: PropTypes.string.isRequired
+  target: PropTypes.string.isRequired,
 }
 
 export default CardComponent
