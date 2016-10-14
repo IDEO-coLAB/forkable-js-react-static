@@ -43,8 +43,28 @@ like Firebase)
 └── webpack.config.js          # Webpack configuration
 ```
 
-### Layout Philosophy
-tbd
+### Directory Layout Organization
+
+With React, entire pages and ndividual UI elements (like a button) are components. 
+
+When creating a component that is generic or might be shared accross the entire app, put the component JavaScript and
+any component styles in a subdirectory of ```components```. 
+
+When creating whole pages, put the top level page component JavaScript, styles specific to the page, and any components needed by the page
+that aren't generic or shared with the rest of the app in a subdirectory of ```pages```.
+
+Styles shared accross the app should go in a new file in the ```styles``` directory.
+
+### Webpack and CSS
+
+[Webpack](https://webpack.github.io/) is a package that bundles multiple JavaScript files and CSS files into a single ```bundle.js``` file that is then referenced by ```index.html```.
+As part of bundling, webpack uses [CSS Modules](https://github.com/css-modules/css-modules) to read and merge local and global CSS files into the generated ```bundle.js```, and renames classes so that
+they don't clash in the global CSS namespace. This means class names in any CSS file in the app are scoped only to that file, so disciplined prefixing of
+class names (like BEM prefixing) isn't necessary.
+
+In order for webpack to bundle a CSS file, it needs to be referenced by a JavaScript file that is used by the app. A local CSS file is typically referenced by the component JavaScript
+that uses it. Global CSS files like ```/styles/base.css``` and ```/styles/grid.css``` are referenced by ```main.js```. If more global styles are needed, they should be added to a new
+file in ```/styles/``` and imported in ```main.js```. See the ```home``` page JavaScript and CSS for an example of how to reference local and global css from a React component. 
 
 ### Getting Started
 
