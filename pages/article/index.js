@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 
 // import local css as s.
 import s from './styles.css'
