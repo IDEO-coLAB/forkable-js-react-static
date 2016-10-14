@@ -10,18 +10,16 @@
 
 /* eslint-disable no-console, global-require */
 
-const fs = require('fs');
 const del = require('del');
-const ejs = require('ejs');
 const webpack = require('webpack');
 
 // TODO: Update configuration settings
-const config = {
-  title: 'React Static Boilerplate',        // Your website title
-  url: 'https://rsb.kriasoft.com',          // Your website URL
-  project: 'react-static-boilerplate',      // Firebase project. See README.md -> How to Deploy
-  trackingID: 'UA-XXXXX-Y',                 // Google Analytics Site's ID
-};
+// const config = {
+//   title: 'React Static Boilerplate',        // Your website title
+//   url: 'https://rsb.kriasoft.com',          // Your website URL
+//   project: 'react-static-boilerplate',      // Firebase project. See README.md -> How to Deploy
+//   trackingID: 'UA-XXXXX-Y',                 // Google Analytics Site's ID
+// };
 
 const tasks = new Map(); // The collection of automation tasks ('clean', 'build', 'publish', etc.)
 
@@ -37,19 +35,6 @@ function run(task) {
 // Clean up the output directory
 // -----------------------------------------------------------------------------
 tasks.set('clean', () => del(['dist/*', '!dist/.git'], { dot: true }));
-
-//
-// Generate sitemap.xml
-// -----------------------------------------------------------------------------
-// tasks.set('sitemap', () => {
-//   const urls = require('./routes.json')
-//     .filter(x => !x.path.includes(':'))
-//     .map(x => ({ loc: x.path }));
-//   const template = fs.readFileSync('./public/sitemap.ejs', 'utf8');
-//   const render = ejs.compile(template, { filename: './public/sitemap.ejs' });
-//   const output = render({ config, urls });
-//   fs.writeFileSync('public/sitemap.xml', output, 'utf8');
-// });
 
 //
 // Bundle JavaScript, CSS and image files with Webpack
@@ -82,7 +67,6 @@ tasks.set('build', () => {
 // Build website and launch it in a browser for testing (default)
 // -----------------------------------------------------------------------------
 tasks.set('start', () => {
-  let count = 0;
   global.HMR = !process.argv.includes('--no-hmr'); // Hot Module Replacement (HMR)
   return run('clean').then(() => new Promise(resolve => {
     const bs = require('browser-sync').create();
@@ -95,29 +79,20 @@ tasks.set('start', () => {
       stats: webpackConfig.stats,
     });
     compiler.plugin('done', stats => {
-      // Generate index.html page
-      // const bundle = stats.compilation.chunks.find(x => x.name === 'main').files[0];
-      // const template = fs.readFileSync('./public/index.ejs', 'utf8');
-      // const render = ejs.compile(template, { filename: './public/index.ejs' });
-      // const output = render({ debug: true, bundle: `/dist/${bundle}`, config });
-      // fs.writeFileSync('./public/index.html', output, 'utf8');
-
       // Launch Browsersync after the initial bundling is complete
       // For more information visit https://browsersync.io/docs/options
-      if (++count === 1) {
-        bs.init({
-          port: process.env.PORT || 3000,
-          ui: { port: Number(process.env.PORT || 3000) + 1 },
-          server: {
-            baseDir: 'public',
-            middleware: [
-              webpackDevMiddleware,
-              require('webpack-hot-middleware')(compiler),
-              require('connect-history-api-fallback')(),
-            ],
-          },
-        }, resolve);
-      }
+      bs.init({
+        port: process.env.PORT || 3000,
+        ui: { port: Number(process.env.PORT || 3000) + 1 },
+        server: {
+          baseDir: 'public',
+          middleware: [
+            webpackDevMiddleware,
+            require('webpack-hot-middleware')(compiler),
+            require('connect-history-api-fallback')(),
+          ],
+        },
+      }, resolve);
     });
   }));
 });
