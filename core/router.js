@@ -8,6 +8,8 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
+ /* eslint-disable no-continue */
+
 import React from 'react'
 import fetch from 'whatwg-fetch'
 

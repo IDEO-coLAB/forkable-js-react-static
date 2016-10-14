@@ -1,5 +1,9 @@
 {
   "extends": "airbnb-base",
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "plugins": [
   	"react"
    ],
@@ -9,7 +13,10 @@
   	}
   },
   "rules": {
-  	"semi": ["error", "never"]
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+  	"semi": ["error", "never"],
+    "class-methods-use-this": "off"
   }
 }
 
