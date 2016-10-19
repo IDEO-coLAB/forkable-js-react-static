@@ -68,18 +68,41 @@ file in ```/styles/``` and imported in ```main.js```. See the ```home``` page Ja
 
 ### Getting Started
 
-**Step 1**. Make sure that you have [Node.js](https://nodejs.org/) v6 or newer installed on your
-machine.
+Here is an example for how to use this repo as the base for a new CoLab react project. Your new project's name is, of all things, `my_new_project`.
 
-**Step 2**. Clone this repository 
+**Step 1:** Make sure that you have [Node.js](https://nodejs.org/) v6 or newer installed on your machine.
+
+**Step 2:** Create a new GitHub repo. We'll assume that it, too, is named `my_new_project` (you'll use this repo as your new project's `origin` repo).
+
+**Step 3:** Clone the `forkable-js-react-static` repo to use as `my_new_project`'s foundation.
 
 ```shell
-$ git clone -o [new app name] -b master --single-branch https://github.com/IDEO-coLAB/forkable-js-react-static MyApp
-$ cd [new app name]
-$ npm install                   # Install project dependencies listed in package.json
+> git clone -b master --single-branch https://github.com/IDEO-coLAB/forkable-js-react-static my_new_project
 ```
 
-**Step 3**. Compile and launch your app locally by running:
+**Step 4:** Set `my_new_project`'s origin to point at your new GitHub project repo (see step 2) for `my_new_project`.
+
+```shell
+# Enter your my_new_project's directory
+> cd my_new_project
+
+# Set my_new_project's remote origin to be the GitHub repo you created for it.
+> git remote set-url origin https://github.com/<YOUR_GITHUB_USERNAME>/my_new_project
+```
+
+**Step 5:** Install the project dependencies listed in package.json.
+
+```shell
+> npm install
+```
+
+**Step 6:** Add informtion about your project to `package.json` by running `npm init`.
+
+```shell
+> npm init
+```
+
+**Step 7:** Compile and launch your app locally by running:
 
 ```shell
 $ npm run start                      
