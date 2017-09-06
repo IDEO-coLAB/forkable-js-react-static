@@ -36,7 +36,7 @@
     "redux": "^3.5.2",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.12.2",
+    "webpack-dev-server": "^1.16.3",
     "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
@@ -90,6 +90,6 @@
     "clean": "node run clean",
     "build": "node run build",
     "build:debug": "node run build --debug",
-    "start": "node run"
+    "start": "webpack-dev-server --debug --hot --inline --config ./webpack.config.js"
   }
 }

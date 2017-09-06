@@ -187,6 +187,10 @@ const config = {
     ]
   },
 
+  devServer: {
+    historyApiFallback: true
+  }
+
 }
 
 // Optimize the bundle in release (production) mode
@@ -194,14 +198,6 @@ if (!isDebug) {
   config.plugins.push(new webpack.optimize.DedupePlugin())
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({ compress: { warnings: isVerbose } }))
   config.plugins.push(new webpack.optimize.AggressiveMergingPlugin())
-}
-
-// Hot Module Replacement (HMR) + React Hot Reload
-if (isDebug && useHMR) {
-  babelConfig.plugins.unshift('react-hot-loader/babel')
-  config.entry.unshift('react-hot-loader/patch', 'webpack-hot-middleware/client')
-  config.plugins.push(new webpack.HotModuleReplacementPlugin())
-  config.plugins.push(new webpack.NoErrorsPlugin())
 }
 
 config.plugins.push(
